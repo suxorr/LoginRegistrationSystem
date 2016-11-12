@@ -1,6 +1,6 @@
 <?php
 require_once 'core/init.php';
 
-$user = DB::getInstance()->update('users', 3, array(
-    'password' => 'newpass',
-));
+$user = DB::getInstance()->delete('users', array('id', '=', 3));
+
+var_dump($user);
