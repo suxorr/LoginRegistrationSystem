@@ -63,6 +63,7 @@ class DB{
             if(in_array($operator, $operators)){
                 $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
 
+				
                 if(!$this->query($sql, array($value))->error()){
                     return $this;
                 }
@@ -77,7 +78,7 @@ class DB{
     }
 
     public function delete($table, $where){
-        return $this->action('DELETE *', $table, $where);
+        return $this->action('DELETE', $table, $where);
     }
 
     public function insert($table, $fields = array()){
@@ -94,7 +95,7 @@ class DB{
             $x++;
         }
 
-        $sql = "INSERT INTO users(`" .implode('`,`', $keys). "`) VALUES({$values})" ;
+        $sql = "INSERT INTO {$table}(`" .implode('`,`', $keys). "`) VALUES({$values})" ;
 
         if(!$this->query($sql, $fields)->error()){
             return true;
