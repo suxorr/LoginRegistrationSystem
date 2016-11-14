@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+/**
+ * enable all reports except for the Error Notice
+ */
+error_reporting(E_ALL & ~E_NOTICE);
+
 $GLOBALS['config']= [
     'mysql' => [
         'host' => '127.0.0.1',

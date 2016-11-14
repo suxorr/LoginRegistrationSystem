@@ -95,6 +95,22 @@ class User{
 		
 	}
 	
+	public function hasPermission($key){
+		$group = $this->_db->get('groups', array('id', '=', $this->data()->group));
+		print_r($group->first());
+	}
+	
+	public function update($fields = array(), $id = null){
+		
+		if(!$id && $this->isLoggedIn()){
+			$id = $this->data()->id;
+		}
+		
+		if(!$this->_db->update('users', $id, $fields)){
+			throw new Exception('There was a problem updating the user!');
+		}
+	}
+	
 	public function data(){
 		return $this->_data;
 	}
