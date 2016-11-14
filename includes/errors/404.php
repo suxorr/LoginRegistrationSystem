@@ -1,1 +1,1 @@
-Ooops you cant use that right now !
+Oops that page can't be found.
